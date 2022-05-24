@@ -3,20 +3,20 @@ using namespace std;
 class SpaningTree {
 
     // arrays ko initialize.
-    int vertices, e, w;
+    int vertices, w;
     int **graph;
     int *visited;
 
 public:
-    SpaningTree(int vertices, int e);
+    SpaningTree(int vertices);
     void addEdge(int start, int e, int weight);
+    void removeEdge(int start, int e);
     void primsAlgorithm();
     void printGraph();
 };
 
-SpaningTree::SpaningTree(int vertices, int e) {
+SpaningTree::SpaningTree(int vertices) {
     this->vertices = vertices;
-    this->e = e;
     graph = new int *[vertices];
     visited = new int[vertices];
     for (int row = 0; row < vertices; row++) {
@@ -31,6 +31,11 @@ SpaningTree::SpaningTree(int vertices, int e) {
 void SpaningTree::addEdge(int start, int e, int weight) {
     graph[start][e] = weight;
     graph[e][start] = weight;
+}
+
+void SpaningTree::removeEdge(int start, int e) {
+    graph[start][e] = 999;
+    graph[e][start] = 999;
 }
 
 void SpaningTree::printGraph() {
@@ -80,16 +85,60 @@ void SpaningTree::primsAlgorithm() {
 }
 
 int main(void) {
-    SpaningTree st = SpaningTree(5, 7);
-    st.printGraph();
-    st.addEdge(0, 1, 200);
-    st.addEdge(0, 3, 600);
-    st.addEdge(1, 2, 300);
-    st.addEdge(1, 4, 500);
-    st.addEdge(2, 4, 700);
-    st.addEdge(3, 4, 900);
-    cout << endl
-         << endl;
-    st.printGraph();
-    st.primsAlgorithm();
+    SpaningTree g = SpaningTree(5);
+
+    while (true) {
+        int s, e, w;
+        cout << "MENU\n1. Insert\n2.Delete\n3.Prims\n4.Print" << endl;
+        int no;
+        cout << "Enter the number for the operation: ";
+        cin >> no;
+        switch (no) {
+        case 1:
+            cout << "Enter the first vertex: ";
+            cin >> s;
+            cout << "Enter the second vertex: ";
+            cin >> e;
+            cout << "Enter the weight: ";
+            cin >> w;
+            g.addEdge(s, e, w);
+            break;
+
+        case 2:
+            cout << "Enter the first edge: ";
+            cin >> s;
+            cout << "Enter the second edge: ";
+            cin >> e;
+            g.removeEdge(s, e);
+
+            break;
+        case 4:
+            g.primsAlgorithm();
+            break;
+        case 5:
+            g.printGraph();
+            break;
+
+        default:
+            break;
+        }
+
+        int con;
+        cout << "Do you want to continue? 1/0: ";
+        cin >> con;
+        if (con == 0)
+            break;
+    }
+
+    // g.printGraph();
+    // g.addEdge(0, 1, 200);
+    // g.addEdge(0, 3, 600);
+    // g.addEdge(1, 2, 300);
+    // g.addEdge(1, 4, 500);
+    // g.addEdge(2, 4, 700);
+    // g.addEdge(3, 4, 900);
+    // cout << endl
+    //      << endl;
+    // g.printGraph();
+    // g.primsAlgorithm();
 }

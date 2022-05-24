@@ -169,20 +169,61 @@ public:
 int main() {
 
     Graph g;
-    g.addEdge(0, 3);
-    g.addEdge(0, 2);
-    g.addEdge(2, 3);
-    g.addEdge(3, 1);
-    g.addEdge(2, 1);
-    g.addEdge(5, 1);
-    g.addEdge(1, 4);
-    g.addEdge(5, 4);
 
-    cout << "The graph is :" << endl;
-    g.printGraph();
+    while (true) {
+        int s, e;
+        cout << "MENU\n1. Insert\n2.Delete\n3.Prims\n4.Print" << endl;
+        int no;
+        cout << "Enter the number for the operation: ";
+        cin >> no;
+        switch (no) {
+        case 1:
+            cout << "Enter the first vertex: ";
+            cin >> s;
+            cout << "Enter the second vertex: ";
+            g.addEdge(s, e);
+            break;
 
-    g.topologicalSort();
+        case 2:
+            cout << "Enter the first vertex: ";
+            cin >> s;
+            cout << "Enter the second vertex: ";
+            cin >> e;
+            g.removeEdge(s, e);
 
-    // switch case daalna hai bus. me so raha ab gn
+            break;
+        case 4:
+            g.topologicalSort();
+            break;
+        case 5:
+            g.printGraph();
+            break;
+
+        default:
+            break;
+        }
+
+        int con;
+        cout << "Do you want to continue? 1/0: ";
+        cin >> con;
+        if (con == 0)
+            break;
+    }
+
+    // g.addEdge(0, 3);
+    // g.addEdge(0, 2);
+    // g.addEdge(2, 3);
+    // g.addEdge(3, 1);
+    // g.addEdge(2, 1);
+    // g.addEdge(5, 1);
+    // g.addEdge(1, 4);
+    // g.addEdge(5, 4);
+
+    // cout << "The graph is :" << endl;
+    // g.printGraph();
+
+    // g.topologicalSort();
+
+    // // switch case daalna hai bus. me so raha ab gn
     return 0;
 }

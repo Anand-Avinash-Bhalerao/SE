@@ -490,29 +490,66 @@ public:
 int main() {
 
     HashTable table = HashTable();
-    table.put("anand", 1111);
-    table.put("ANAND", 8888);
-    table.put("superman", 7777);
+    // table.put("anand", 1111);
+    // table.put("ANAND", 8888);
+    // table.put("superman", 7777);
 
-    table.put("akshay", 2222);
-    table.put("raju", 3333);
-    table.put("shyaam", 4444);
-    table.put("baburao", 5555);
-    table.put("baburao1", 5555);
-    table.put("kachraseth", 5555);
+    // table.put("akshay", 2222);
+    // table.put("raju", 3333);
+    // table.put("shyaam", 4444);
+    // table.put("baburao", 5555);
+    // table.put("baburao1", 5555);
+    // table.put("kachraseth", 5555);
 
-    table.put("shaktiman", 6666);
-    table.put("shaktiman2", 9999);
+    // table.put("shaktiman", 6666);
+    // table.put("shaktiman2", 9999);
 
-    cout << "\n\nAfter insertion \n\n";
+    // cout << "\n\nAfter insertion \n\n";
 
-    table.print();
+    // table.print();
 
-    table.get("baburao");
-    table.remove("baburao");
-    table.print();
+    // table.get("baburao");
+    // table.remove("baburao");
+    // table.print();
 
-    // switch cases bana lo.
+    while (true) {
 
+        cout << "MENU:\n1.Insert\n2.Delete3.Search\n4.Print\n";
+        string name;
+        int no;
+        int choice;
+        cout << "Enter the choice code for the operation: ";
+        cin >> choice;
+        switch (choice) {
+        case 1:
+            cout << "Enter the name to be inserted: ";
+            cin >> name;
+            cout << "Enter the phone number to be inserted: ";
+            cin >> no;
+            table.put(name, no);
+            break;
+        case 2:
+            cout << "Enter the name to be deleted: ";
+            cin >> name;
+            table.remove(name);
+
+        case 3:
+            cout << "Enter the name to be searched: ";
+            cin >> name;
+            table.get(name);
+
+        case 4:
+            table.print();
+
+        default:
+            break;
+        }
+
+        int con;
+        cout << "Do you want to contine? 1/0: ";
+        cin >> con;
+        if (con == 0)
+            break;
+    }
     return 0;
 }

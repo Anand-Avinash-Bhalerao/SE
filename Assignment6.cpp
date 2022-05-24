@@ -261,24 +261,73 @@ public:
 int main() {
 
     Graph g;
-    g.addEdge(0, 1);
-    g.addEdge(0, 2);
-    g.addEdge(1, 2);
-    g.addEdge(1, 4);
-    g.addEdge(2, 3);
-    g.addEdge(3, 3);
-    g.addEdge(3, 5);
 
-    g.print();
+    while (true) {
+        int s, e;
+        cout << "MENU\n1. Insert\n2.Delete\n3.BFS\n4.DFS\n5.Print" << endl;
+        int no;
+        cout << "Enter the number for the operation: ";
+        cin >> no;
+        switch (no) {
+        case 1:
+            cout << "Enter the first edge: ";
+            cin >> s;
+            cout << "Enter the second edge: ";
+            cin >> e;
+            g.addEdge(s, e);
+            break;
 
-    // switch case bana lo agar chahiye toh
+        case 2:
+            cout << "Enter the first edge: ";
+            cin >> s;
+            cout << "Enter the second edge: ";
+            cin >> e;
+            g.removeEdge(s, e);
+            break;
+        case 3:
+            cout << "Enter the starting edge for bfs: ";
+            cin >> s;
+            g.bfs(s);
+            break;
 
-    cout << "Following is Depth First Traversal"
-            " (starting from vertex 2) \n";
-    g.dfs(2);
+        case 4:
+            cout << "Enter the starting edge for dfs: ";
+            cin >> s;
+            g.dfs(s);
+            break;
+        case 5:
+            g.print();
+            break;
 
-    cout << "\n bfs is:\n";
-    g.bfs(0);
+        default:
+            break;
+        }
+
+        int con;
+        cout << "Do you want to continue? 1/0: ";
+        cin >> con;
+        if (con == 0)
+            break;
+    }
+
+    // g.addEdge(0, 1);
+    // g.addEdge(0, 2);
+    // g.addEdge(1, 2);
+    // g.addEdge(1, 4);
+    // g.addEdge(2, 3);
+    // g.addEdge(3, 3);
+    // g.addEdge(3, 5);
+
+    // g.print();
+
+    // // switch case bana lo agar chahiye toh
+
+    // cout << "Following is Depth First Traversal"
+    //         " (starting from vertex 2) \n";
+    // g.dfs(2);
+
+    // cout << "\n bfs is:\n";
+    // g.bfs(0);
 
     return 0;
 }
